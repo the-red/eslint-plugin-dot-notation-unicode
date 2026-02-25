@@ -1,6 +1,6 @@
 {
   "name": "eslint-plugin-dot-notation-unicode",
-  "version": "0.1.0",
+  "version": "0.2.0",
   "description": "ESLint dot-notation rule with full Unicode identifier support",
   "main": "lib/index.js",
   "scripts": {

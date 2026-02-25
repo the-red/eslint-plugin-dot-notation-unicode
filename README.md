@@ -95,11 +95,11 @@ obj[variable]        // dynamic access
 
 ## Options
 
-This plugin supports the same options as ESLint's built-in `dot-notation` rule:
+This plugin supports the same options as ESLint's built-in `dot-notation` rule, plus an additional option for legacy parser compatibility.
 
 ### `allowKeywords` (default: `true`)
 
-When set to `false`, bracket notation is required for reserved words.
+Set to `false` to follow ECMAScript version 3 compatible style, requiring bracket notation for reserved word properties.
 
 ```js
 // With { "allowKeywords": false }
@@ -109,13 +109,30 @@ obj.class     // Error
 
 ### `allowPattern` (default: `""`)
 
-A regex pattern for property names that are allowed to use bracket notation.
+Allows bracket notation for property names that match the specified regular expression pattern. This is useful when working with external APIs that use snake_case while maintaining camelCase in your own code.
 
 ```js
 // With { "allowPattern": "^[a-z]+_[a-z]+$" }
 obj["snake_case"]  // OK (matches pattern)
 obj["camelCase"]   // Error (doesn't match pattern)
 ```
+
+### `legacyParserSupport` (default: `false`)
+
+Set to `true` for compatibility with older parsers (TypeScript < 5.5, Node.js < 18.20 / 19.x / < 20.12). When enabled, certain Unicode characters that are valid in the latest Unicode specification but not recognized by older parsers will not be converted to dot notation.
+
+Affected characters:
+- `・` (U+30FB) KATAKANA MIDDLE DOT
+- `･` (U+FF65) HALFWIDTH KATAKANA MIDDLE DOT
+- Zero Width Non-Joiner (U+200C)
+- Zero Width Joiner (U+200D)
+
+```js
+// With { "legacyParserSupport": true }
+obj["send・receive"]  // OK (not converted, "・" may cause issues in older parsers)
+```
+
+> **Note**: This option is only needed if you're using TypeScript < 5.5 or Node.js < 18.20 / 19.x / < 20.12. These characters were fixed in Unicode 15.1.
 
 ## Why a Separate Plugin?
 
