@@ -12,7 +12,7 @@ An ESLint plugin that extends the `dot-notation` rule with full Unicode identifi
 ESLint's built-in `dot-notation` rule uses this regex for identifier validation:
 
 ```js
-const validIdentifier = /^[a-zA-Z_$][a-zA-Z0-9_$]*$/u;
+const validIdentifier = /^[a-zA-Z_$][\w$]*$/u;
 ```
 
 This only matches ASCII characters, so valid JavaScript like `obj.日本語` is not recognized, and `obj["日本語"]` won't be flagged for conversion.

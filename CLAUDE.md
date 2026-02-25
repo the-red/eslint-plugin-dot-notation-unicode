@@ -18,7 +18,7 @@ ESLint標準の `dot-notation` ルールがUnicode識別子（日本語・中国
 
 ESLint本家の問題のある実装:
 ```js
-const validIdentifier = /^[a-zA-Z_$][a-zA-Z0-9_$]*$/u;
+const validIdentifier = /^[a-zA-Z_$][\w$]*$/u;
 ```
 
 本プラグインで使用すべき正しい実装:

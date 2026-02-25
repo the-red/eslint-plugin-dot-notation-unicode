@@ -13,7 +13,7 @@ ESLint標準の `dot-notation` ルールがUnicode識別子（日本語・中国
 ESLint本体の `dot-notation` ルールは、識別子の判定に以下の正規表現を使用している：
 
 ```js
-const validIdentifier = /^[a-zA-Z_$][a-zA-Z0-9_$]*$/u;
+const validIdentifier = /^[a-zA-Z_$][\w$]*$/u;
 ```
 
 ASCII範囲のみがハードコードされており、JavaScript仕様上有効な日本語等のUnicode識別子を検出できない。

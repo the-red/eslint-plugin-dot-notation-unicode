@@ -12,7 +12,7 @@ ESLint の `dot-notation` ルールを拡張し、Unicode 識別子に完全対�
 ESLint 標準の `dot-notation` ルールは、識別子の判定に以下の正規表現を使用しています：
 
 ```js
-const validIdentifier = /^[a-zA-Z_$][a-zA-Z0-9_$]*$/u;
+const validIdentifier = /^[a-zA-Z_$][\w$]*$/u;
 ```
 
 これは ASCII 文字のみにマッチするため、`obj.日本語` のような有効な JavaScript が認識されず、`obj["日本語"]` がドット記法への変換対象になりません。
