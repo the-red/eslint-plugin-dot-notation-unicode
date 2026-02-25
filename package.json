@@ -1,0 +1,21 @@
+{
+  "name": "eslint-plugin-dot-notation-unicode",
+  "version": "0.0.0",
+  "description": "",
+  "main": "index.js",
+  "scripts": {
+    "test": "echo \"Error: no test specified\" && exit 1"
+  },
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/the-red/eslint-plugin-dot-notation-unicode.git"
+  },
+  "keywords": [],
+  "author": "Hisaki Akaza",
+  "license": "MIT",
+  "type": "commonjs",
+  "bugs": {
+    "url": "https://github.com/the-red/eslint-plugin-dot-notation-unicode/issues"
+  },
+  "homepage": "https://github.com/the-red/eslint-plugin-dot-notation-unicode#readme"
+}
