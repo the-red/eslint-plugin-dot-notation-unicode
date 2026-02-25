@@ -132,7 +132,7 @@ obj["あ・い"]  // OK (not converted, "・" may cause issues in older parsers)
 obj["あい"]    // Error (will be converted to obj.あい)
 ```
 
-> **Note**: This option is only needed if you're using TypeScript 5.4 or earlier, or Node.js versions before 18.20. These characters were [fixed in TypeScript 5.5](https://github.com/microsoft/TypeScript/pull/58521) and Unicode 15.1.
+> **Note**: This option is only needed if you're using TypeScript < 5.5 or Node.js < 18.20. These characters were [fixed in TypeScript 5.5](https://github.com/microsoft/TypeScript/pull/58521) and Unicode 15.1.
 
 ## Why a Separate Plugin?
 

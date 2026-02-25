@@ -2,7 +2,7 @@
  * @fileoverview Tests for legacyParserSupport option
  * @author Hisaki Akaza
  *
- * In TypeScript 5.4 and earlier or Node.js < 18.20, some Unicode characters
+ * In TypeScript < 5.5 or Node.js < 18.20, some Unicode characters
  * (e.g., "・" U+30FB) are not recognized as identifiers.
  * The legacyParserSupport option ensures compatibility with these environments.
  */
