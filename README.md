@@ -119,7 +119,7 @@ obj["camelCase"]   // Error (doesn't match pattern)
 
 ### `legacyParserSupport` (default: `false`)
 
-Set to `true` for compatibility with older parsers (TypeScript 5.4 and earlier, Node.js < 18.20). When enabled, certain Unicode characters that are valid in the latest Unicode specification but not recognized by older parsers will not be converted to dot notation.
+Set to `true` for compatibility with older parsers (TypeScript &lt; 5.5, Node.js < 18.20). When enabled, certain Unicode characters that are valid in the latest Unicode specification but not recognized by older parsers will not be converted to dot notation.
 
 Affected characters:
 - `・` (U+30FB) KATAKANA MIDDLE DOT
