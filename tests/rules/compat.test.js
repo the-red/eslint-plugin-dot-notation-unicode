@@ -3,7 +3,7 @@
  * @author Josh Perez
  *
  * This file is taken from ESLint's original test suite:
- * https://github.com/eslint/eslint/blob/main/tests/lib/rules/dot-notation.js
+ * https://github.com/eslint/eslint/blob/e7d72a77e5e1277690a505160137aebd5985909a/tests/lib/rules/dot-notation.js
  */
 
 "use strict";
