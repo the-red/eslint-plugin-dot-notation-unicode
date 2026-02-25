@@ -20,7 +20,25 @@ ASCII範囲のみがハードコードされており、JavaScript仕様上有�
 
 ### 2.2 `@typescript-eslint/dot-notation` の状況
 
-TypeScript版の拡張ルールも、識別子判定は本家ESLintのロジックを継承しているため同様の問題がある。加えて、型情報（`parserOptions.project`）が必須で、導入すると ESLint の実行速度が大幅に低下する。
+`@typescript-eslint/dot-notation` は ESLint 本家の `dot-notation` を**拡張**したルール。単純なラッパーではなく、以下の機能を追加している：
+
+- **型情報の活用**: TypeScript の型情報を使って判定を行う
+- **追加オプション**:
+  - `allowPrivateClassPropertyAccess` - private プロパティへのブラケットアクセスを許可
+  - `allowProtectedClassPropertyAccess` - protected プロパティへのブラケットアクセスを許可
+  - `allowIndexSignaturePropertyAccess` - インデックスシグネチャのプロパティへのブラケットアクセスを許可
+
+しかし、**識別子判定は本家ESLintのロジックを継承しているため、Unicode識別子の問題は同様に存在する**。
+
+参考: https://typescript-eslint.io/rules/dot-notation/
+
+#### 将来の拡張: TypeScript版プラグイン
+
+本プラグインの TypeScript 対応版（`@typescript-eslint/dot-notation` の Unicode 対応版）を作成する場合は、以下のアプローチが考えられる：
+
+1. `@typescript-eslint/dot-notation` のソースコードをフォークし、識別子判定を `\p{ID_Start}` / `\p{ID_Continue}` ベースに差し替え
+2. 型情報を活用した追加オプション（`allowPrivateClassPropertyAccess` 等）はそのまま維持
+3. パッケージ名は `eslint-plugin-dot-notation-unicode-ts` または `@the-red/eslint-plugin-dot-notation-unicode-ts` などを検討
 
 ### 2.3 ルール凍結（Frozen）
 
