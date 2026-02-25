@@ -1,0 +1,39 @@
+{
+  "name": "eslint-plugin-dot-notation-unicode",
+  "version": "0.1.0",
+  "description": "ESLint dot-notation rule with full Unicode identifier support",
+  "main": "lib/index.js",
+  "scripts": {
+    "test": "mocha tests/**/*.test.js",
+    "format": "prettier --write .",
+    "format:check": "prettier --check ."
+  },
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/the-red/eslint-plugin-dot-notation-unicode.git"
+  },
+  "keywords": [
+    "eslint",
+    "eslintplugin",
+    "dot-notation",
+    "unicode",
+    "identifier",
+    "japanese",
+    "cjk"
+  ],
+  "author": "Hisaki Akaza",
+  "license": "MIT",
+  "type": "commonjs",
+  "peerDependencies": {
+    "eslint": ">=8.0.0"
+  },
+  "devDependencies": {
+    "eslint": "^9.0.0",
+    "mocha": "^10.0.0",
+    "prettier": "^3.8.1"
+  },
+  "bugs": {
+    "url": "https://github.com/the-red/eslint-plugin-dot-notation-unicode/issues"
+  },
+  "homepage": "https://github.com/the-red/eslint-plugin-dot-notation-unicode#readme"
+}
