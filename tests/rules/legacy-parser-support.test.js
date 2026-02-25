@@ -48,9 +48,9 @@ ruleTester.run("dot-notation (default: Unicode compliant)", rule, {
 	invalid: [
 		// By default, identifiers containing "・" are also converted (Unicode compliant)
 		{
-			code: 'foo["あ・い"]',
-			output: "foo.あ・い",
-			errors: [{ messageId: "useDot", data: { key: q("あ・い") } }],
+			code: 'foo["送信・受信"]', // U+30FB KATAKANA MIDDLE DOT
+			output: "foo.送信・受信",
+			errors: [{ messageId: "useDot", data: { key: q("送信・受信") } }],
 		},
 		{
 			code: 'foo["中・黒"]',
@@ -60,7 +60,15 @@ ruleTester.run("dot-notation (default: Unicode compliant)", rule, {
 		{
 			code: 'foo["テスト・ケース"]',
 			output: "foo.テスト・ケース",
-			errors: [{ messageId: "useDot", data: { key: q("テスト・ケース") } }],
+			errors: [
+				{ messageId: "useDot", data: { key: q("テスト・ケース") } },
+			],
+		},
+		// Halfwidth katakana middle dot (U+FF65) is also converted by default
+		{
+			code: 'foo["送信･受信"]', // U+FF65 HALFWIDTH KATAKANA MIDDLE DOT
+			output: "foo.送信･受信",
+			errors: [{ messageId: "useDot", data: { key: q("送信･受信") } }],
 		},
 		// Normal Unicode identifiers are also converted
 		{
@@ -79,15 +87,20 @@ ruleTester.run("dot-notation (legacyParserSupport: true)", rule, {
 	valid: [
 		// With legacyParserSupport: true, identifiers containing "・" are not converted
 		{
+			code: 'foo["送信・受信"]', // U+30FB KATAKANA MIDDLE DOT
+			options: [{ legacyParserSupport: true }],
+		},
+		{
 			code: 'foo["あ・い"]',
 			options: [{ legacyParserSupport: true }],
 		},
 		{
-			code: 'foo["中・黒"]',
+			code: 'foo["テスト・ケース"]',
 			options: [{ legacyParserSupport: true }],
 		},
+		// Halfwidth katakana middle dot (U+FF65) is also not converted
 		{
-			code: 'foo["テスト・ケース"]',
+			code: 'foo["送信･受信"]', // U+FF65 HALFWIDTH KATAKANA MIDDLE DOT
 			options: [{ legacyParserSupport: true }],
 		},
 		// Identifiers containing ZWNJ/ZWJ are also not converted

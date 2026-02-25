@@ -119,20 +119,20 @@ obj["camelCase"]   // Error (doesn't match pattern)
 
 ### `legacyParserSupport` (default: `false`)
 
-Set to `true` for compatibility with older parsers (TypeScript &lt; 5.5, Node.js < 18.20). When enabled, certain Unicode characters that are valid in the latest Unicode specification but not recognized by older parsers will not be converted to dot notation.
+Set to `true` for compatibility with older parsers (TypeScript < 5.5, Node.js < 18.20 / 19.x / < 20.12). When enabled, certain Unicode characters that are valid in the latest Unicode specification but not recognized by older parsers will not be converted to dot notation.
 
 Affected characters:
 - `・` (U+30FB) KATAKANA MIDDLE DOT
+- `･` (U+FF65) HALFWIDTH KATAKANA MIDDLE DOT
 - Zero Width Non-Joiner (U+200C)
 - Zero Width Joiner (U+200D)
 
 ```js
 // With { "legacyParserSupport": true }
-obj["あ・い"]  // OK (not converted, "・" may cause issues in older parsers)
-obj["あい"]    // Error (will be converted to obj.あい)
+obj["send・receive"]  // OK (not converted, "・" may cause issues in older parsers)
 ```
 
-> **Note**: This option is only needed if you're using TypeScript < 5.5 or Node.js < 18.20. These characters were [fixed in TypeScript 5.5](https://github.com/microsoft/TypeScript/pull/58521) and Unicode 15.1.
+> **Note**: This option is only needed if you're using TypeScript < 5.5 or Node.js < 18.20 / 19.x / < 20.12. These characters were fixed in Unicode 15.1.
 
 ## Why a Separate Plugin?
 

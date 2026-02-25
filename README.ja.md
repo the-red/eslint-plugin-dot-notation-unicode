@@ -119,20 +119,20 @@ obj["camelCase"]   // エラー（パターンにマッチしない）
 
 ### `legacyParserSupport`（デフォルト: `false`）
 
-`true` にすると、古いパーサー（TypeScript 5.5 未満、Node.js 18.20 未満）との互換性を確保します。有効にすると、最新の Unicode 仕様では有効だが古いパーサーで認識されない一部の文字を含む識別子は、ドット記法に変換されません。
+`true` にすると、古いパーサー（TypeScript 5.5 未満、Node.js 18.20 未満 / 19.x / 20.12 未満）との互換性を確保します。有効にすると、最新の Unicode 仕様では有効だが古いパーサーで認識されない一部の文字を含む識別子は、ドット記法に変換されません。
 
 対象となる文字：
-- `・`（U+30FB）カタカナ中黒
-- ゼロ幅非接合子（U+200C）
-- ゼロ幅接合子（U+200D）
+- `・` (U+30FB) KATAKANA MIDDLE DOT
+- `･` (U+FF65) HALFWIDTH KATAKANA MIDDLE DOT
+- Zero Width Non-Joiner (U+200C)
+- Zero Width Joiner (U+200D)
 
 ```js
 // { "legacyParserSupport": true } の場合
-obj["あ・い"]  // OK（変換されない。「・」は古いパーサーで問題を起こす可能性あり）
-obj["あい"]    // エラー（obj.あい に変換される）
+obj["送信・受信"]  // OK（変換されない。「・」は古いパーサーで問題を起こす可能性あり）
 ```
 
-> **注意**: このオプションは TypeScript 5.5 未満、または Node.js 18.20 未満を使用している場合にのみ必要です。これらの文字は [TypeScript 5.5 で修正](https://github.com/microsoft/TypeScript/pull/58521)され、Unicode 15.1 で対応されました。
+> **注意**: このオプションは TypeScript 5.5 未満、または Node.js 18.20 未満 / 19.x / 20.12 未満を使用している場合にのみ必要です。これらの文字は Unicode 15.1 で対応されました。
 
 ## なぜ別プラグインが必要なのか
 
