@@ -227,7 +227,18 @@ cd eslint-plugin-dot-notation-unicode && npm link
 cd <project> && npm link eslint-plugin-dot-notation-unicode
 ```
 
-## 7. 参考情報
+## 7. 今後の予定
+
+- [ ] **awesome-eslint への登録**: ESLint プラグインのキュレーションリスト [awesome-eslint](https://github.com/dustinspecker/awesome-eslint) へ PR を投げる
+  - 投稿ガイドライン: https://github.com/dustinspecker/awesome-eslint/blob/main/contributing.md
+- [ ] **TypeScript 版の開発**: `@typescript-eslint/dot-notation` の Unicode 対応版
+- [ ] **レガシー非8進数リテラル対応**: `08['prop']` → `08 .prop` のような変換をサポート
+  - `08`, `09`, `018` などは ES5 以前の非8進数リテラル（現在は10進数として解釈される）
+  - `isDecimalInteger` 関数の拡張が必要
+  - オプション（例: `allowLegacyOctalLiterals`）で有効化する形を検討
+  - 参考: [tests/rules/compat.test.js](../tests/rules/compat.test.js) のコメントアウト部分
+
+## 8. 参考情報
 
 | リソース | URL |
 |---------|-----|
@@ -237,4 +248,5 @@ cd <project> && npm link eslint-plugin-dot-notation-unicode
 | Unicode UAX #31（識別子仕様） | https://www.unicode.org/reports/tr31/ |
 | ECMAScript仕様（IdentifierName） | https://tc39.es/ecma262/#prod-IdentifierName |
 | `is-identifier`（Unicode識別子判定ライブラリ） | https://github.com/sindresorhus/is-identifier |
+| `identifier-regex`（識別子正規表現の実装例） | https://github.com/sindresorhus/identifier-regex/blob/2d400947acd1c05dd85108dc2e35d32f68ec53d8/index.js#L3 |
 | ESLint カスタムルール作成ガイド | https://eslint.org/docs/latest/extend/custom-rules |
